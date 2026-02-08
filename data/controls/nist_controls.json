@@ -1,0 +1,201 @@
+[
+  {
+    "id": "GV.RR",
+    "function": "Govern",
+    "name": "Roles and Responsibilities",
+    "required_elements": [
+      "roles",
+      "responsibilities",
+      "accountability",
+      "enforcement"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "ID.AM",
+    "function": "Identify",
+    "name": "Asset Management",
+    "required_elements": [
+      "asset inventory",
+      "asset ownership",
+      "classification"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "PR.AA",
+    "function": "Protect",
+    "name": "Access Control",
+    "required_elements": [
+      "access control",
+      "least privilege",
+      "authentication",
+      "authorization"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "RS.MA",
+    "function": "Respond",
+    "name": "Incident Management",
+    "required_elements": [
+      "incident response",
+      "roles",
+      "escalation",
+      "timeline"
+    ],
+    "severity": "Critical"
+  },
+  {
+    "id": "RC.RP",
+    "function": "Recover",
+    "name": "Recovery Planning",
+    "required_elements": [
+      "backup",
+      "restoration",
+      "recovery plan",
+      "post incident review"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "GV.PO",
+    "function": "Govern",
+    "name": "Policy Review and Update",
+    "required_elements": [
+      "policy review",
+      "update frequency",
+      "approval",
+      "version control"
+    ],
+    "severity": "Medium"
+  },
+  {
+    "id": "GV.RM",
+    "function": "Govern",
+    "name": "Risk Management Strategy",
+    "required_elements": [
+      "risk assessment",
+      "risk appetite",
+      "risk tolerance",
+      "risk treatment"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "ID.RA",
+    "function": "Identify",
+    "name": "Risk Assessment",
+    "required_elements": [
+      "threat identification",
+      "vulnerability assessment",
+      "impact analysis",
+      "likelihood"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "ID.IM",
+    "function": "Identify",
+    "name": "Improvement Process",
+    "required_elements": [
+      "lessons learned",
+      "continuous improvement",
+      "review outcomes"
+    ],
+    "severity": "Medium"
+  },
+  {
+    "id": "PR.DS",
+    "function": "Protect",
+    "name": "Data Security",
+    "required_elements": [
+      "data classification",
+      "encryption",
+      "data at rest",
+      "data in transit"
+    ],
+    "severity": "Critical"
+  },
+  {
+    "id": "PR.AT",
+    "function": "Protect",
+    "name": "Security Awareness and Training",
+    "required_elements": [
+      "security training",
+      "awareness program",
+      "employee training",
+      "training frequency"
+    ],
+    "severity": "Medium"
+  },
+  {
+    "id": "PR.PS",
+    "function": "Protect",
+    "name": "Platform Security",
+    "required_elements": [
+      "secure configuration",
+      "patch management",
+      "system hardening"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "DE.CM",
+    "function": "Detect",
+    "name": "Continuous Monitoring",
+    "required_elements": [
+      "logging",
+      "monitoring",
+      "alerting",
+      "event detection"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "DE.AE",
+    "function": "Detect",
+    "name": "Anomalous Event Detection",
+    "required_elements": [
+      "anomaly detection",
+      "incident identification",
+      "event analysis"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "RS.CO",
+    "function": "Respond",
+    "name": "Incident Communication",
+    "required_elements": [
+      "incident communication",
+      "stakeholder notification",
+      "escalation communication"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "RS.AN",
+    "function": "Respond",
+    "name": "Incident Analysis",
+    "required_elements": [
+      "root cause analysis",
+      "incident investigation",
+      "forensics"
+    ],
+    "severity": "High"
+  },
+  {
+    "id": "RC.CO",
+    "function": "Recover",
+    "name": "Recovery Communication",
+    "required_elements": [
+      "recovery communication",
+      "status updates",
+      "stakeholder updates"
+    ],
+    "severity": "Medium"
+  }
+  
+]
+  

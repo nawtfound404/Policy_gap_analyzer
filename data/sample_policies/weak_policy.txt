@@ -1,0 +1,67 @@
+1. Roles and Responsibilities
+The organization defines and documents cybersecurity roles and responsibilities.
+System owners, data owners, and administrators are accountable for implementing
+and enforcing security controls within their scope of responsibility.
+Management ensures accountability through periodic reviews and enforcement actions.
+
+2. Asset Management
+The organization maintains an up-to-date inventory of information assets,
+including hardware, software, and data assets.
+Each asset is assigned an owner and classified based on sensitivity and criticality.
+
+3. Risk Management
+The organization performs periodic risk assessments to identify threats,
+vulnerabilities, likelihood, and potential impact.
+Risk appetite and tolerance levels are defined by management, and risks are treated
+through mitigation, transfer, acceptance, or avoidance strategies.
+
+4. Policy Review and Update
+Cybersecurity policies are reviewed annually or upon significant changes.
+All policy updates require management approval and are version-controlled.
+
+5. Access Control
+Access to systems and data is restricted based on the principle of least privilege.
+Authentication and authorization mechanisms are implemented to ensure only
+authorized users can access organizational resources.
+
+6. Data Security
+Sensitive data is classified and protected using encryption.
+Encryption mechanisms are applied to data at rest and data in transit in accordance
+with organizational standards.
+
+7. Security Awareness and Training
+All employees receive mandatory cybersecurity awareness training upon onboarding
+and at least annually thereafter.
+Training effectiveness is reviewed periodically.
+
+8. Platform Security
+Systems are securely configured using approved baselines.
+Patch management and system hardening practices are implemented to reduce
+vulnerabilities.
+
+9. Continuous Monitoring
+Security events are logged and monitored continuously.
+Alerting mechanisms are in place to detect and respond to suspicious activities.
+
+10. Incident Management
+The organization maintains an incident response plan.
+Roles, escalation procedures, and response timelines are clearly defined.
+Incidents are documented, analyzed, and handled according to the response plan.
+
+11. Incident Communication
+Relevant stakeholders are notified during cybersecurity incidents through defined
+communication channels.
+Escalation communication procedures are followed during major incidents.
+
+12. Incident Analysis
+Security incidents are investigated to determine root cause.
+Forensic analysis is performed when necessary to support incident response.
+
+13. Recovery Planning
+Regular backups are performed for critical systems.
+Recovery plans define restoration procedures and include post-incident reviews
+to improve resilience.
+
+14. Recovery Communication
+During recovery activities, stakeholders receive regular status updates
+until systems are fully restored.
