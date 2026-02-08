@@ -89,7 +89,7 @@ def get_control_by_id(control_id: str) -> Dict:
 def analyze_gap(policy_text: str) -> List[Dict]:
     """
     Analyzes the policy text against loaded controls.
-    Simple keyword matching for demonstration.
+    Refined keyword matching logic.
     """
     controls = load_controls()
     results = []
@@ -97,24 +97,50 @@ def analyze_gap(policy_text: str) -> List[Dict]:
     policy_text_lower = policy_text.lower()
     
     for control in controls:
-        # Simple heuristic: strictly check if key terms from intent are present
-        
         status = "Non-Compliant"
         missing = "Policy does not address this control."
         risk = f"Without {control['name']}, the organization is at risk of unauthorized access or data loss."
         rewrite = f"The organization shall implement {control['name']} to ensure {control['intent']}."
         
-        # Mock logic
-        if control["id"] == "AC-1" and "access control" in policy_text_lower:
-            status = "Compliant"
-            missing = "None"
-        elif control["id"] == "AC-2" and "account" in policy_text_lower:
-             status = "Partial"
-             missing = "Lacks specific de-provisioning procedures."
-        elif control["id"] == "CP-9" and "backup" in policy_text_lower:
-            status = "Compliant"
-            missing = "None"
-        # Add more logic as needed
+        # Enhanced Mock Logic with more keywords
+        if control["id"] == "AC-1":
+            if "access control policy" in policy_text_lower or "access management policy" in policy_text_lower:
+                status = "Compliant"
+                missing = "None"
+            elif "access" in policy_text_lower:
+                status = "Partial"
+                missing = "Mentioned but lacks formal policy structure."
+                
+        elif control["id"] == "AC-2":
+            if "account management" in policy_text_lower and "provisioning" in policy_text_lower:
+                status = "Compliant"
+                missing = "None"
+            elif "account" in policy_text_lower:
+                 status = "Partial"
+                 missing = "Lacks specific de-provisioning procedures."
+                 
+        elif control["id"] == "AU-2":
+             if "audit" in policy_text_lower and "logs" in policy_text_lower:
+                 status = "Compliant"
+                 missing = "None"
+        
+        elif control["id"] == "IR-4":
+            if "incident response" in policy_text_lower and "handling" in policy_text_lower:
+                status = "Compliant"
+                missing = "None"
+                
+        elif control["id"] == "CP-9":
+            if "backup" in policy_text_lower and "restoration" in policy_text_lower:
+                status = "Compliant"
+                missing = "None"
+            elif "backup" in policy_text_lower:
+                status = "Partial"
+                missing = "Lacks restoration testing requirements."
+                
+        elif control["id"] == "RA-3":
+            if "risk assessment" in policy_text_lower:
+                status = "Compliant"
+                missing = "None"
         
         results.append({
             "id": control["id"],
