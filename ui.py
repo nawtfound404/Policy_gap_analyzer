@@ -41,11 +41,37 @@ analyze = st.button("🔍 Analyze Policy")
 
 if uploaded_file and analyze:
     with st.spinner("Analyzing policy..."):
-        # Read file
-        raw_text = uploaded_file.read().decode("utf-8", errors="ignore")
+        # Read file bytes and extract text according to file type
+        content = uploaded_file.read()
+        filename = getattr(uploaded_file, "name", getattr(uploaded_file, "filename", "")).lower()
+
+        raw_text = ""
+        try:
+            if filename.endswith('.pdf'):
+                import io
+                import PyPDF2
+                pdf_reader = PyPDF2.PdfReader(io.BytesIO(content))
+                for page in pdf_reader.pages:
+                    page_text = page.extract_text()
+                    if page_text:
+                        raw_text += page_text + "\n"
+            elif filename.endswith('.docx'):
+                try:
+                    from docx import Document
+                    import io
+                    doc = Document(io.BytesIO(content))
+                    for para in doc.paragraphs:
+                        raw_text += para.text + "\n"
+                except ImportError:
+                    raw_text = content.decode("utf-8", errors="ignore")
+            else:
+                raw_text = content.decode("utf-8", errors="ignore")
+        except Exception:
+            raw_text = content.decode("utf-8", errors="ignore")
+
         policy_text = _clean_text(raw_text)
 
-        clauses = policy_text.lower().split(".")
+        clauses = policy_text.split(".")
 
         # -------------------------
         # Run Compliance

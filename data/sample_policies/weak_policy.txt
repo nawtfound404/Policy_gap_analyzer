@@ -1,67 +1,76 @@
-1. Roles and Responsibilities
-The organization defines and documents cybersecurity roles and responsibilities.
-System owners, data owners, and administrators are accountable for implementing
-and enforcing security controls within their scope of responsibility.
-Management ensures accountability through periodic reviews and enforcement actions.
+Information Security Policy
 
-2. Asset Management
-The organization maintains an up-to-date inventory of information assets,
-including hardware, software, and data assets.
-Each asset is assigned an owner and classified based on sensitivity and criticality.
+Version: 1.0
+Approved By: Executive Management
+Applies To: Entire Organization
 
-3. Risk Management
-The organization performs periodic risk assessments to identify threats,
-vulnerabilities, likelihood, and potential impact.
-Risk appetite and tolerance levels are defined by management, and risks are treated
-through mitigation, transfer, acceptance, or avoidance strategies.
+1. Purpose
 
-4. Policy Review and Update
-Cybersecurity policies are reviewed annually or upon significant changes.
-All policy updates require management approval and are version-controlled.
+This policy establishes mandatory requirements for protecting the confidentiality, integrity, and availability of organizational information assets. It defines governance expectations, responsibilities, and control requirements to manage cybersecurity risk across the organization.
 
-5. Access Control
-Access to systems and data is restricted based on the principle of least privilege.
-Authentication and authorization mechanisms are implemented to ensure only
-authorized users can access organizational resources.
+2. Scope
 
-6. Data Security
-Sensitive data is classified and protected using encryption.
-Encryption mechanisms are applied to data at rest and data in transit in accordance
-with organizational standards.
+This policy applies to all systems, applications, networks, data, employees, contractors, and third parties that access or manage organizational information assets.
 
-7. Security Awareness and Training
-All employees receive mandatory cybersecurity awareness training upon onboarding
-and at least annually thereafter.
-Training effectiveness is reviewed periodically.
+3. Roles and Responsibilities
 
-8. Platform Security
-Systems are securely configured using approved baselines.
-Patch management and system hardening practices are implemented to reduce
-vulnerabilities.
+Executive Management shall provide oversight and ensure enforcement of this policy.
 
-9. Continuous Monitoring
-Security events are logged and monitored continuously.
-Alerting mechanisms are in place to detect and respond to suspicious activities.
+The Information Security Officer is responsible for defining, maintaining, and monitoring security controls.
 
-10. Incident Management
-The organization maintains an incident response plan.
-Roles, escalation procedures, and response timelines are clearly defined.
-Incidents are documented, analyzed, and handled according to the response plan.
+System Owners shall be accountable for protecting assets under their ownership.
 
-11. Incident Communication
-Relevant stakeholders are notified during cybersecurity incidents through defined
-communication channels.
-Escalation communication procedures are followed during major incidents.
+All personnel must comply with this policy and report security incidents immediately.
 
-12. Incident Analysis
-Security incidents are investigated to determine root cause.
-Forensic analysis is performed when necessary to support incident response.
+4. Asset Management
 
-13. Recovery Planning
-Regular backups are performed for critical systems.
-Recovery plans define restoration procedures and include post-incident reviews
-to improve resilience.
+The organization shall maintain an asset inventory that identifies all information systems, hardware, software, and data assets.
+Each asset must have an assigned owner responsible for its protection and lifecycle management.
+Assets shall be classified based on sensitivity and criticality to determine appropriate security controls.
 
-14. Recovery Communication
-During recovery activities, stakeholders receive regular status updates
-until systems are fully restored.
+5. Risk Management
+
+The organization shall conduct risk assessments at regular intervals to identify threats, vulnerabilities, and potential impacts.
+Risk tolerance and acceptance decisions must be documented and approved by management.
+Identified risks shall be treated through mitigation, transfer, acceptance, or avoidance.
+
+6. Access Control
+
+Access to information systems shall be restricted based on the principle of least privilege.
+User access must be authorized, authenticated, and reviewed periodically.
+Privileged access shall be limited to authorized personnel and monitored for misuse.
+
+7. Data Security
+
+Information shall be classified according to sensitivity and business impact.
+Sensitive data must be protected using encryption when stored or transmitted.
+Data handling procedures shall ensure protection against unauthorized disclosure or modification.
+
+8. Security Awareness and Training
+
+All personnel must receive security awareness training at least annually.
+Training shall cover responsibilities, acceptable use, and incident reporting procedures.
+
+9. Continuous Monitoring and Logging
+
+The organization shall implement logging and monitoring to detect security events.
+Logs must be reviewed regularly to identify anomalous or suspicious activity.
+
+10. Incident Response
+
+The organization shall maintain an incident response process for detecting, reporting, and managing security incidents.
+Incident response roles, escalation paths, and communication procedures must be defined and tested periodically.
+
+11. Recovery and Continuity
+
+The organization shall maintain a recovery plan to restore systems and data following incidents.
+Backups must be performed regularly and restoration procedures shall be tested.
+Post-incident reviews shall be conducted to identify improvements.
+
+12. Policy Review and Enforcement
+
+This policy shall be reviewed at least annually and updated as needed.
+Non-compliance may result in disciplinary action in accordance with organizational procedures.
+
+Effective Date: ___
+Next Review Date: ___
