@@ -1,176 +1,223 @@
-# Policy Gap Analyzer
+📜 Policy Gap Analyzer
 
-**Policy Gap Analyzer** is an intelligent cybersecurity compliance system that evaluates organizational policy documents against structured security controls. It generates explainable remediation guidance using a locally hosted Large Language Model (Phi-3 Mini).
+An AI-powered cybersecurity compliance tool that analyzes organizational policy documents, evaluates them against selected NIST-aligned controls, identifies compliance gaps, and generates human-readable remediation content using a local Large Language Model (Phi-3 Mini).
 
-The system enforces a **strict separation** between deterministic compliance logic and AI-based text generation, ensuring accuracy, explainability, and audit readiness.
+🚀 Overview
 
----
+The Policy Gap Analyzer performs end-to-end policy analysis:
 
-## 🔍 Overview
+Parses policy documents (PDF / DOCX / TXT)
 
-Organizations often struggle to understand where their policies fall short, why gaps matter, and how to remediate them in a formal, audit-ready manner.
+Evaluates policy strength against predefined security controls
 
-**Policy Gap Analyzer addresses this by:**
-* Performing **deterministic, non-AI** compliance gap analysis.
-* Using AI **only** for controlled explanation and drafting.
-* Operating **fully offline** using a locally hosted LLM.
+Classifies controls as ADEQUATE, WEAK, or MISSING
 
----
+Uses an LLM to:
 
-## 🚀 Features
+Explain security risks
 
-### 📄 Policy Parsing
-* Supports **TXT**, **PDF**, and **DOCX** files.
-* Cleans, normalizes, and tokenizes policy content automatically.
+Rewrite missing policy sections
 
-### ✅ Deterministic Gap Analysis (No AI)
-* Evaluates policies against predefined security controls.
-* **Identifies control status:**
-    * 🟢 ADEQUATE
-    * 🟡 WEAK
-    * 🔴 MISSING
-* Assigns severity and computes **Overall Compliance Percentage** & **Organizational Maturity Level**.
-* *Note: All compliance decisions are fully deterministic and auditable.*
+Generate improvement roadmaps
 
-### 🧠 AI-Powered Policy Improvement (Phi-3 Mini)
-* Uses **Microsoft Phi-3 Mini (3.8B)** via Ollama.
-* For each identified gap, generates:
-    1.  **Risk Explanation:** Why the gap matters.
-    2.  **Remediation:** Formal, audit-ready policy language.
-    3.  **Roadmap:** High-level steps for improvement.
-* Uses one consolidated LLM call per control gap for consistency.
+The system is designed to differentiate between strong, enforceable policies and weak or descriptive documents, not just detect keywords.
 
-### 🔗 End-to-End Orchestration
-* Full pipeline from `Policy Upload` → `Gap Detection` → `Remediation Guidance`.
-* Designed for offline and asynchronous governance workflows.
+🛠️ A. How to Run the Project
+1️⃣ Clone the Repository
 
----
-
-## 🏗️ System Architecture
-
-The system follows a two-member modular architecture with strict responsibility boundaries.
-
-### 1️⃣ Compliance Engine (Member 1)
-**Type:** Deterministic | Non-AI | Authoritative
-
-* **Responsibilities:**
-    * Loads control definitions from `data/controls/nist_controls.json`.
-    * Parses policy content and evaluates required control elements.
-    * Assigns Status (ADEQUATE, WEAK, MISSING) and Severity.
-    * Computes Compliance Percentage and Maturity Level.
-* **Role:** This engine is the **single source of truth** for compliance decisions.
-
-### 2️⃣ Policy Improvement Engine (Member 2)
-**Type:** Generative | Non-Decisional
-
-* **Implementation:** `src/llm/llm_engine.py`
-* **Responsibilities:**
-    * Consumes structured gap data from the Compliance Engine.
-    * Uses Phi-3 Mini to generate explanations and rewrites.
-* **Strict Constraints:**
-    * ❌ No compliance decisions.
-    * ❌ No severity assignment.
-    * ❌ No new controls or requirements.
-    * ❌ No technical implementation steps.
-* **Role:** Used **only** for explanation and drafting—never for judgment.
-
----
-
-## 🧠 Key Design Decisions
-
-### 🔹 Single Merged Prompt per Control
-Each control gap triggers exactly one LLM call that generates the Risk Explanation, Policy Rewrite, and Roadmap simultaneously.
-* **Benefits:** Improved performance, output consistency, and stronger explainability guarantees.
-
-### 🔹 Offline Governance Model
-Compliance remediation is treated as a governance task, not a real-time workload.
-* **Priorities:** Accuracy, Explainability, Audit Readiness.
-
----
-
-## 🛠️ Setup & Installation
-
-### Prerequisites
-* **Python 3.10+**
-* **Ollama** (Installed and running locally)
-
-### Installation Steps
-
-**1. Clone Repository & Create Virtual Environment**
-```bash
-git clone <repository-url>
+git clone https://github.com/nawtfound404/Policy_gap_analyzer
 cd Policy_gap_analyzer
+2️⃣ Create & Activate Virtual Environment
 
-# Linux/Mac
-python -m venv venv
-source venv/bin/activate
+python -m venv venv source venv/bin/activate # Linux / macOS venv\Scripts\activate # Windows
+3️⃣ Install Dependencies
 
-# Windows
-python -m venv venv
-venv\Scripts\activate
-
-**2. Install Python Dependencies**
-
-
-```bash
 pip install -r requirements.txt
+4️⃣ Setup Ollama (Required for LLM)
 
-**3. Install and Configure Ollama (Required)**
+This project uses Phi-3 Mini (3.8B) locally via Ollama.
 
-```bash
-# Install Ollama (Linux/Mac)
-curl -fsSL [https://ollama.com/install.sh](https://ollama.com/install.sh) | sh
 
-# Pull the Phi-3 Mini model
-ollama pull phi3:3.8b
+# Install Ollama (Linux/macOS) curl -fsSL https://ollama.com/install.sh | sh # Pull the model ollama pull phi3:3.8b # Start the Ollama service ollama serve
 
-Ensure the Ollama service is running before executing the pipeline.
+Verify installation:
 
-🏃 Usage
-CLI Pipeline (Recommended for Testing)
-Run the full compliance analysis and LLM generation pipeline:
 
-```Bash
+ollama --version
+5️⃣ Run the Full Pipeline (CLI)
+
 python test_full_pipeline.py
 
-Outputs:
+This runs:
 
-Compliance summary (percentage + maturity).
+Policy parsing
 
-List of control gaps.
+Compliance evaluation
 
-For each gap: Risk explanation, Rewritten policy text, and Improvement roadmap.
+LLM-based remediation generation
 
-```API Mode (Optional)
-Run the FastAPI backend:
+6️⃣ Run the UI (Streamlit)
 
-```Bash
-uvicorn src.app:app --reload
+streamlit run ui.py
 
-Provides endpoints for policy upload, compliance analysis, and remediation generation.
+Upload a policy file and view:
+
+Compliance score
+
+Risk explanations
+
+Rewritten policy sections
+
+Improvement roadmap
+
+📦 B. Dependencies & Installation
+Core Dependencies
+
+Python 3.10+
+
+FastAPI
+
+Streamlit
+
+PyPDF2
+
+python-docx
+
+Ollama (external)
+
+Phi-3 Mini model
+
+requirements.txt (example)
+
+fastapi uvicorn streamlit PyPDF2 python-docx
+🧠 C. Logic & Workflow (Core Explanation)
+🔹 High-Level Workflow
+
+Policy File ↓ Parser (PDF / DOCX / TXT) ↓ Clause Normalization ↓ Compliance Engine ↓ Control Classification ↓ LLM Policy Improvement ↓ Final Report
+🔹 Step 1: Policy Parsing
+
+Extracts raw text from uploaded files
+
+Normalizes text aggressively
+
+Converts content into policy clauses (not raw paragraphs)
+
+Why this matters:
+
+Clause-level parsing allows accurate compliance reasoning and avoids PDF formatting bias.
+
+🔹 Step 2: Compliance Evaluation
+
+Each control contains:
+
+Required elements
+
+Severity
+
+NIST function mapping
+
+For each control, the engine:
+
+Matches required elements using keywords + safe synonyms
+
+Evaluates policy strength signals:
+
+Mandatory language (shall, must)
+
+Ownership & accountability
+
+Organizational scope
+
+Control status:
+
+MISSING → No enforceable policy
+
+WEAK → Partial or weak language
+
+ADEQUATE → Explicit, enforceable coverage
+
+Compliance score is computed as an aggregate maturity indicator.
+
+🔹 Step 3: LLM-Based Gap Resolution
+
+Only WEAK and MISSING controls are sent to the LLM.
+
+For each control (one call per control):
+
+Risk Explanation (why the gap matters)
+
+Rewritten Policy Section (audit-ready)
+
+Improvement Roadmap (governance-focused steps)
+
+The LLM does not decide compliance — it only generates content based on deterministic findings.
+
+🔹 Step 4: Output
+
+Final output includes:
+
+Compliance percentage
+
+Maturity level
+
+Per-control gap analysis
+
+AI-generated remediation content
+
+⚠️ D. Limitations & Future Improvements
+Current Limitations
+
+Keyword-Based Matching
+
+No semantic embeddings yet
+
+Synonyms must be curated manually
+
+Performance
+
+LLM calls are sequential
+
+Large policies with many gaps may take several minutes
+
+Control Coverage
+
+Limited to selected NIST-aligned controls
+
+Not full NIST 800-53 catalog
+
+PDF Quality
+
+Scanned PDFs (images) are not supported (no OCR)
+
+Future Improvements
+
+🔮 Semantic embeddings for smarter clause matching
+
+⚡ Parallel LLM execution for faster analysis
+
+📊 Control-level scoring visualization
+
+🧠 Context-aware policy rewriting
+
+🏛️ Support for ISO 27001 / SOC 2 mappings
+
+📄 OCR support for scanned documents
+
+🎯 Design Philosophy (Important)
+
+This system prioritizes enforceable policy commitments over descriptive text.
+
+As a result:
+
+Templates and guides score low
+
+Real enterprise policies score higher
+
+Compliance scores are conservative but defensible
 
 📂 Project Structure
-Plaintext
-.
-├── data/
-│   ├── controls/               # Control definitions (JSON)
-│   └── sample_policies/        # Test policy documents
-├── src/
-│   ├── compliance/             # Deterministic gap analysis logic
-│   ├── llm/                    # Phi-3 Policy Improvement Engine
-│   ├── parser/                 # Policy file parsing (PDF/DOCX/TXT)
-│   └── app.py                  # FastAPI backend
-├── test_full_pipeline.py       # End-to-end pipeline test
-├── ui.py                       # Streamlit UI (optional)
-└── requirements.txt
-⚠️ Important Notes
-AI output is never authoritative.
 
-Compliance decisions are fully deterministic.
-
-Generated policy text is assistive and not a replacement for human review.
-
-The system is designed for auditability, traceability, and governance.
-
+. ├── data/ │ ├── controls/ # NIST-aligned controls (JSON) │ └── sample_policies/ # Test policies ├── src/ │ ├── compliance/ # Compliance logic │ ├── parser/ # Policy parsing & normalization │ ├── llm/ # Phi-3 Mini integration │ └── app.py # API backend (optional) ├── ui.py # Streamlit UI ├── test_full_pipeline.py # End-to-end test └── requirements.txt
 📝 License
-Proprietary — Internal Use Only
+
+Internal / Academic / Hackathon Use Only.
